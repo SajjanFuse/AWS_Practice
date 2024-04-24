@@ -1,0 +1,1 @@
+This is a file uploaded via Python script to AWS S3 bucket in CLI. 
