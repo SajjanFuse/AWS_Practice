@@ -1,11 +1,10 @@
 import boto3 
 
-local_file = 'adsales.csv'
+local_file = 'tensorflow_model.pkl'
 bucket_name = 'sajjan-trainee-filelist'
-file_key = 'adsales.csv'
+file_key = 'tensorflow_model.pkl'
 
 s3_client = boto3.client('s3')
-
 
 try:
     s3_client.upload_file(local_file, bucket_name, file_key)
