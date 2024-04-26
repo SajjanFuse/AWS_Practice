@@ -1,8 +1,8 @@
 import boto3 
 
-local_file = 'tensorflow_model.pkl'
+local_file = 'linear_model.pkl'
 bucket_name = 'sajjan-trainee-filelist'
-file_key = 'tensorflow_model.pkl'
+file_key = 'linear_model.pkl'
 
 s3_client = boto3.client('s3')
 

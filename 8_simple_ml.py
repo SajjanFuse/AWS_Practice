@@ -4,7 +4,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 import numpy as np
 import boto3
-"""
+import pickle 
+
 # input of file 
 df = pd.read_csv('adsales.csv')
 
@@ -15,15 +16,15 @@ y = df['sales(K)']
 print(X)
 print(y)
 
-"""
-# getting from S3 bucket 
-def download_file(bucket, filename):
-    s3 = boto3.client('s3')
-    print('Downloading file')
-    s3.download_file(bucket, filename, filename)
-    print("Download successful")
+
+# # getting from S3 bucket 
+# def download_file(bucket, filename):
+#     s3 = boto3.client('s3')
+#     print('Downloading file')
+#     s3.download_file(bucket, filename, filename)
+#     print("Download successful")
     
-download_file('sajjan-trainee-filelist', 'adsales.csv')
+# download_file('sajjan-trainee-filelist', 'adsales.csv')
 
 # input of file 
 df = pd.read_csv('adsales.csv')
@@ -37,6 +38,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 model = LinearRegression()
 model.fit(X_train, y_train)
+
+with open('linear_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
 
 y_pred = model.predict(X_test)
 
